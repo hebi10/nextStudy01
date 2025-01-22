@@ -26,7 +26,8 @@ export const {
         if (!authResponse.ok) {
           return null
         }
-        const user = await authResponse.json()
+
+        const user = await authResponse.json();
         console.log('user', user);
         return {
           email: user.id,
