@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import './globals.css'
 import { MSWProvider } from './_components/MSWComponent'
+import AuthSession from "@/app/_components/AuthSession";
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -20,7 +21,9 @@ export default function RootLayout({
     <html lang="en">
       <body className={inter.className}>
         <MSWProvider>
+          <AuthSession>
           {children}
+          </AuthSession>
         </MSWProvider>
       </body>
     </html>
