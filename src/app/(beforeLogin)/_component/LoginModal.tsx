@@ -14,6 +14,7 @@ export default function LoginModal() {
   const onSubmit: FormEventHandler<HTMLFormElement> = async (e) => {
     e.preventDefault();
     setMessage('');
+    console.log("클릭!")
     try {
       const result = await signIn("credentials", {
         username: id,
@@ -21,14 +22,10 @@ export default function LoginModal() {
         redirect: false,
       })
       console.log(result);
-      if (result?.code === 'no_user') {
-        setMessage('가입하지 않은 유저입니다.');
-      } else if (result?.code === 'wrong_password') {
-        setMessage('비밀번호가 틀렸습니다.');
-      }
       router.replace('/home');
     } catch (err) {
       console.error(err);
+      setMessage('아이디와 비밀번호가 일치하지 않습니다.');
     }
   };
   const onClickClose = () => {

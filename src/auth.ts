@@ -1,6 +1,7 @@
 import NextAuth from "next-auth"
 import CredentialsProvider from "next-auth/providers/credentials";
-import { NextResponse } from "next/server";
+import {NextResponse} from "next/server";
+
 export const {
   handlers: { GET, POST },
   auth,
@@ -23,11 +24,12 @@ export const {
             password: credentials.password,
           }),
         })
+
         if (!authResponse.ok) {
           return null
         }
 
-        const user = await authResponse.json();
+        const user = await authResponse.json()
         console.log('user', user);
         return {
           email: user.id,

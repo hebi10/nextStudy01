@@ -22,7 +22,7 @@ export default function RootLayout({
       <body className={inter.className}>
         <MSWProvider>
           <AuthSession>
-          {children}
+            {children}
           </AuthSession>
         </MSWProvider>
       </body>
