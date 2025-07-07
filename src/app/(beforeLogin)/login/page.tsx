@@ -1,17 +1,19 @@
-"use client";
+'use client';
 
 import {useRouter} from "next/navigation";
 import Main from "@/app/(beforeLogin)/_component/Main";
-import { useEffect } from "react";
+import { useSession } from 'next-auth/react';
 
 export default function Login() {
   const router = useRouter();
 
-  useEffect(() => {
-    router.replace('/i/flow/login');
-  }, [router]);
+  const { data: session }  = useSession();
 
-  return (
-    <Main/>
-  );
+  if (session?.user) {
+    router.replace('/home');
+    return null;
+  }
+
+  router.replace('/i/flow/login')
+  return <Main />;
 }

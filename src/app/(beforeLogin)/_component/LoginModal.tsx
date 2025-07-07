@@ -14,7 +14,6 @@ export default function LoginModal() {
   const onSubmit: FormEventHandler<HTMLFormElement> = async (e) => {
     e.preventDefault();
     setMessage('');
-    console.log("클릭!")
     try {
       const result = await signIn("credentials", {
         username: id,

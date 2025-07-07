@@ -1,8 +1,13 @@
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import './globals.css'
-import { MSWProvider } from './_components/MSWComponent'
-import AuthSession from "@/app/_components/AuthSession";
+import {MSWProvider} from "@/app/_component/MSWComponent";
+import AuthSession from "@/app/_component/AuthSession";
+
+if (process.env.NEXT_RUNTIME === 'nodejs' && process.env.NODE_ENV !== 'production') {
+  const { server } = require('@/mocks/http')
+  server.listen()
+}
 
 const inter = Inter({ subsets: ['latin'] })
 

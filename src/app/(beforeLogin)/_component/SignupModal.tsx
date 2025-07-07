@@ -21,17 +21,12 @@ function showMessage(message: string | null | undefined) {
   if (message === 'user_exists') {
     return '이미 사용 중인 아이디입니다.';
   }
-  if (message === 'nickname must be a string') {
-    return '닉네임이 필요합니다.';
-  }
-  return message;
+  return '';
 }
 
 export default function SignupModal() {
   const [state, formAction] = useFormState(onSubmit, { message: null });
   const { pending } = useFormStatus();
-
-  console.log('state', state);
 
   return (
     <>
@@ -46,26 +41,24 @@ export default function SignupModal() {
               <div className={style.inputDiv}>
                 <label className={style.inputLabel} htmlFor="id">아이디</label>
                 <input id="id" name="id" className={style.input} type="text" placeholder=""
-                       required defaultValue={state.id as string}
+                       required
                 />
               </div>
               <div className={style.inputDiv}>
                 <label className={style.inputLabel} htmlFor="name">닉네임</label>
                 <input id="name" name="name" className={style.input} type="text" placeholder=""
-                       required defaultValue={state.nickname as string}
+                       required
                 />
               </div>
               <div className={style.inputDiv}>
                 <label className={style.inputLabel} htmlFor="password">비밀번호</label>
                 <input id="password" name="password" className={style.input} type="password" placeholder=""
-                       required defaultValue={state.password as string}
+                       required
                 />
               </div>
               <div className={style.inputDiv}>
                 <label className={style.inputLabel} htmlFor="image">프로필</label>
-                <input id="image" name="image"
-                       required className={style.input} type="file" accept="image/*"
-                       defaultValue={state.image as string}
+                <input id="image" name="image" required className={style.input} type="file" accept="image/*"
                 />
               </div>
             </div>
